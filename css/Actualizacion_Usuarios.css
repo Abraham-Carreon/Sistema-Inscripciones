@@ -1,0 +1,53 @@
+div
+{
+    text-align: center;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+}
+
+nav.navbar
+{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+div.Centrado
+{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+nav.navbar-item
+{
+    text-align: center;
+    align-items: center;
+}
+
+div{
+    background-color: #ffffff;
+
+}
+
+col-auto2{
+    center;
+}
+
+form-control2{
+    height: 35px solid;
+    weight: 23px solid;
+}
+
+margin{
+    color: #ffffff;
+}
+
+input{
+    height: 35px solid;
+
+}
+
+color{
+    background-color: #ffffff;
+}
