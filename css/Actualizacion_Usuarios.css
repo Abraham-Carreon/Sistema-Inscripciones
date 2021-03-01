@@ -5,49 +5,52 @@ div
     background-color: #ffffff;
 }
 
-nav.navbar
-{
-    text-align: center;
-    align-items: center;
-    align-content: center;
+.form-control2{
+    height: 35px;
+    width: 23px;
 }
 
-div.Centrado
-{
-    text-align: center;
-    align-items: center;
-    align-content: center;
+button.is-info{
+    margin: center;
+    width: 100px;
 }
 
-nav.navbar-item
-{
-    text-align: center;
-    align-items: center;
-}
-
-div{
-    background-color: #ffffff;
-
-}
-
-col-auto2{
-    center;
-}
-
-form-control2{
+.input{
     height: 35px solid;
-    weight: 23px solid;
 }
 
-margin{
-    color: #ffffff;
+div.borde{
+    margin: auto;
+    width: 1000px;
 }
 
-input{
-    height: 35px solid;
-
+nav.navbar{
+    margin: auto;
+    width: 250px;
 }
 
-color{
-    background-color: #ffffff;
+
+div.control{
+    width: 250px;
+    align-items: center;
+    margin: auto;
+}
+
+nav.navbar{
+    margin: auto;
+    width: 250px;
+}
+div.borde{
+    margin: auto;
+    width: 1000px;
+}
+
+div.borce{
+    width: 1000px;
+    margin: auto;
+    height: 600px;
+}
+
+table.table is-bordered{
+
 }

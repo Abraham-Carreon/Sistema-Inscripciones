@@ -14,7 +14,7 @@ div.borde{
     border: 3px solid #00d1b2;
     width: 1000px;
 }
-button.button is-primary{
+button.button.is-primary{
     margin: center;
     width: 100px;
 }
@@ -27,7 +27,7 @@ div.borce{
     align-items: ;
 }
 
-table.table is-bordered{
+table.table.is-bordered{
     border: #00d1b2;
 }
 
