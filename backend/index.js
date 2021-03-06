@@ -129,9 +129,16 @@ app.get('/api/deportistas/:id' , (req,res) =>
                 }
                 else
                 {
-                    // Retorna los deportes a el endpoint y tambien el status
-                    res.status(200).json(result)                    
-                    
+                    // Retorna si existe el deportista
+                    if (result.length > 0)
+                    {
+                        res.status(200).json({ "Mensaje": `El deportista con la matricula ${matricula} existe`})                    
+                    } 
+                        
+                    else
+                    {
+                        res.status(401).json({ "Mensaje": `El deportista con la matricula ${matricula} no existe`})                    
+                    }
                     connection.end((err) =>
                     {
                         if (err) console.log(err)
