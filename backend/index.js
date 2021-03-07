@@ -132,9 +132,9 @@ app.get('/api/deportistas/:id' , (req,res) =>
                     // Retorna si existe el deportista
                     if (result.length > 0)
                     {
-                        res.status(200).json({ "Mensaje": `El deportista con la matricula ${matricula} existe`})                    
+                        res.status(200).json(result)                  
                     } 
-                        
+
                     else
                     {
                         res.status(401).json({ "Mensaje": `El deportista con la matricula ${matricula} no existe`})                    
@@ -173,7 +173,7 @@ app.put('/api/deportistas/:id' , (req,res) =>
         else 
         {
             console.log("Conexion hecha correctamente")            
-            const updateAthetes = `
+            const updateAthletes = `
                                     update deportistas 
                                     set Matricula = ${matricula}, 
                                     Nombre = '${nombre}', 
@@ -182,7 +182,7 @@ app.put('/api/deportistas/:id' , (req,res) =>
                                     Correo = '${correo}' 
                                     where Matricula = ${matricula} `
 
-            connection.query(updateAthetes, (err, result, fields) =>
+            connection.query(updateAthletes, (err, result, fields) =>
             {
                 if (err) 
                 {
@@ -249,6 +249,55 @@ app.post('/api/administradores/' , (req,res) =>
                     {
                         res.status(401).json({ "Mensaje": `El administrador con la matricula ${matricula} no existe`})                    
                     }
+                    
+                    connection.end((err) =>
+                    {
+                        if (err) console.log(err)
+                        
+                        else console.log("Conexion cerrada correctamente")
+                    })
+                }
+            })
+        }
+    })
+})
+
+app.post('/api/inscripcion/' , (req,res) =>
+{
+    const { matricula, idEntrenador, idDeporte, idAdministrador } = req.body
+    
+    let fecha = new Date()
+    fecha = `${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDate()}`
+    
+    const connection = mysql.createConnection(dbData)
+
+    connection.connect((err) =>
+    {
+        if (err) 
+        {
+            console.log(err)
+            res.status(500).json( { Mensaje: "Error en la conexion de la base de datos"} )
+        }
+
+        else 
+        {
+            console.log("Conexion hecha correctamente")            
+            const insertInscription = `
+                                    insert into inscripciones(Matricula, Id_entrenador, Id_deporte, Fecha_inscripcion, Id_administrador)
+                                    values(${matricula}, ${idEntrenador}, ${idDeporte}, '${fecha}', ${idAdministrador})
+                                     `
+
+            connection.query(insertInscription, (err, result, fields) =>
+            {
+                if (err) 
+                {
+                    console.log(err)
+                    res.status(406).json( { Mensaje: "Hubo un error al insertar o no existe el usuario"} )
+                }
+                else
+                {
+                    // Retorna las inscripciones a el endpoint y tambien el status
+                    res.status(200).json({ "Mensaje": `El usuario con la matricula ${matricula} ha sido inscrito`})                    
                     
                     connection.end((err) =>
                     {
