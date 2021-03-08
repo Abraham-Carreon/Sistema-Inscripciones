@@ -262,6 +262,7 @@ app.post('/api/administradores/' , (req,res) =>
     })
 })
 
+// Insertar la inscripcion en la base de datos
 app.post('/api/inscripcion/' , (req,res) =>
 {
     const { matricula, idEntrenador, idDeporte, idAdministrador } = req.body
@@ -298,6 +299,62 @@ app.post('/api/inscripcion/' , (req,res) =>
                     // Retorna las inscripciones a el endpoint y tambien el status
                     res.status(200).json({ "Mensaje": `El usuario con la matricula ${matricula} ha sido inscrito`})                    
                     
+                    connection.end((err) =>
+                    {
+                        if (err) console.log(err)
+                        
+                        else console.log("Conexion cerrada correctamente")
+                    })
+                }
+            })
+        }
+    })
+})
+
+// Busca todas las inscripciones
+app.get('/api/inscripciones/' , (req,res) =>
+{  
+    const connection = mysql.createConnection(dbData)
+
+    connection.connect((err) =>
+    {
+        if (err) 
+        {
+            console.log(err)
+            res.status(500).json( { Mensaje: "Error en la conexion de la base de datos"} )
+        }
+       
+        else 
+        {
+            console.log("Conexion hecha correctamente")
+            const searchInscription = ` SELECT *
+                                        FROM inscripciones
+                                        INNER JOIN deportistas 
+                                        ON deportistas.Matricula = inscripciones.matricula
+                                        INNER JOIN deportes
+                                        on deportes.Id_deporte = inscripciones.Id_deporte
+                                        `
+
+            connection.query(searchInscription, (err, result, fields) =>
+            {
+                if (err) 
+                {
+                    console.log(err)
+                    res.status(400).json( { Mensaje: "Hubo un error en la busqueda"} )
+                }
+                else
+                {
+                    // Retorna las inscripciones existentes
+                    if (result.length > 0)
+                    {
+                        res.status(200).json(result)                  
+                    } 
+
+                    else
+                    {
+                        res.status(401).json({ "Mensaje": `No existen inscripciones`})                    
+                    }
+
                     connection.end((err) =>
                     {
                         if (err) console.log(err)
