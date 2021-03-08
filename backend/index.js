@@ -262,55 +262,6 @@ app.post('/api/administradores/' , (req,res) =>
     })
 })
 
-// Insertar la inscripcion en la base de datos
-app.post('/api/inscripcion/' , (req,res) =>
-{
-    const { matricula, idEntrenador, idDeporte, idAdministrador } = req.body
-    let fecha = new Date()
-    fecha = `${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDate()}`
-    
-    const connection = mysql.createConnection(dbData)
-
-    connection.connect((err) =>
-    {
-        if (err) 
-        {
-            console.log(err)
-            res.status(500).json( { Mensaje: "Error en la conexion de la base de datos"} )
-        }
-
-        else 
-        {
-            console.log("Conexion hecha correctamente")            
-            const insertInscription = `
-                                    insert into inscripciones(Matricula, Id_entrenador, Id_deporte, Fecha_inscripcion, Id_administrador)
-                                    values(${matricula}, ${idEntrenador}, ${idDeporte}, '${fecha}', ${idAdministrador})
-                                     `
-
-            connection.query(insertInscription, (err, result, fields) =>
-            {
-                if (err) 
-                {
-                    console.log(err)
-                    res.status(406).json( { Mensaje: "Hubo un error al insertar o no existe el usuario"} )
-                }
-                else
-                {
-                    // Retorna las inscripciones a el endpoint y tambien el status
-                    res.status(200).json({ "Mensaje": `El usuario con la matricula ${matricula} ha sido inscrito`})                    
-                    
-                    connection.end((err) =>
-                    {
-                        if (err) console.log(err)
-                        
-                        else console.log("Conexion cerrada correctamente")
-                    })
-                }
-            })
-        }
-    })
-})
-
 // Busca todas las inscripciones
 app.get('/api/inscripciones/' , (req,res) =>
 {  
@@ -485,5 +436,99 @@ app.get('/api/inscripciones/deporte/:id' , (req,res) =>
     })
 })
 
+// Insertar la inscripcion en la base de datos
+app.post('/api/inscripcion/' , (req,res) =>
+{
+    const { matricula, idEntrenador, idDeporte, idAdministrador } = req.body
+    let fecha = new Date()
+    fecha = `${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDate()}`
+    
+    const connection = mysql.createConnection(dbData)
+
+    connection.connect((err) =>
+    {
+        if (err) 
+        {
+            console.log(err)
+            res.status(500).json( { Mensaje: "Error en la conexion de la base de datos"} )
+        }
+
+        else 
+        {
+            console.log("Conexion hecha correctamente")            
+            const insertInscription = `
+                                    insert into inscripciones(Matricula, Id_entrenador, Id_deporte, Fecha_inscripcion, Id_administrador)
+                                    values(${matricula}, ${idEntrenador}, ${idDeporte}, '${fecha}', ${idAdministrador})
+                                     `
+
+            connection.query(insertInscription, (err, result, fields) =>
+            {
+                if (err) 
+                {
+                    console.log(err)
+                    res.status(406).json( { Mensaje: "Hubo un error al insertar o no existe el usuario"} )
+                }
+                else
+                {
+                    // Retorna las inscripciones a el endpoint y tambien el status
+                    res.status(200).json({ "Mensaje": `El usuario con la matricula ${matricula} ha sido inscrito`})                    
+                    
+                    connection.end((err) =>
+                    {
+                        if (err) console.log(err)
+                        
+                        else console.log("Conexion cerrada correctamente")
+                    })
+                }
+            })
+        }
+    })
+})
+
+// Elimina la inscripcion en la base de datos por el id de la inscripcion 
+app.delete('/api/inscripcion/:id' , (req,res) =>
+{
+    const idInscripcion = req.params.id
+    const connection = mysql.createConnection(dbData)
+
+    connection.connect((err) =>
+    {
+        if (err) 
+        {
+            console.log(err)
+            res.status(500).json( { Mensaje: "Error en la conexion de la base de datos"} )
+        }
+
+        else 
+        {
+            console.log("Conexion hecha correctamente")            
+            const deleteInscription = `
+                                    delete from inscripciones
+                                    where Id_inscripcion = ${idInscripcion}
+                                    `
+
+            connection.query(deleteInscription, (err, result, fields) =>
+            {
+                if (err) 
+                {
+                    console.log(err)
+                    res.status(406).json( { Mensaje: "Hubo un error al eliminar o no existe la inscripcion"} )
+                }
+                else
+                {
+                    // Aviso de que la inscripcion ha sido eliminada
+                    res.status(200).json({ "Mensaje": `La inscripcion ha sido eliminada`})                    
+                    
+                    connection.end((err) =>
+                    {
+                        if (err) console.log(err)
+                        
+                        else console.log("Conexion cerrada correctamente")
+                    })
+                }
+            })
+        }
+    })
+})
 
 app.listen(port, () => console.log(`Servidor corriendo en http://localhost:${port}`))
