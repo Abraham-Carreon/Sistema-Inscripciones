@@ -1,0 +1,19 @@
+{
+  "name": "backend-inscripciones",
+  "version": "1.0.0",
+  "description": "Creacion de la API para el sistema",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "type": "module",
+  "author": "Abraham Carreon",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
