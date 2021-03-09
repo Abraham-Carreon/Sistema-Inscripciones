@@ -11,7 +11,6 @@ nav.navbar{
 }
 div.borde{
     margin: auto;
-    border: 3px solid #00d1b2;
     width: 1000px;
 }
 button.button is-primary{
@@ -20,7 +19,6 @@ button.button is-primary{
 }
 
 div.borce{
-    border: 3px solid #00d1b2;
     width: 1000px;
     margin: auto;
     height: 600px;
@@ -30,6 +28,12 @@ div.borce{
 table.table is-bordered{
     border: #00d1b2;
 }
+
+div.box{
+    margin: auto;
+    width: 1000px;
+}
+
 
 /* pruebas
 div.derechas{
