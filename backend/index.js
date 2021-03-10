@@ -12,4 +12,7 @@ app.use(express.urlencoded({extended: true}))
 // Uso de todas las rutas
 app.use(router)
 
+// Para prueba
+app.get('/', (req, res) => res.send("Esta funcionando"))
+
 app.listen(port, () => console.log(`Servidor corriendo en http://localhost:${port}`))

@@ -4,6 +4,7 @@
   "description": "Creacion de la API para el sistema",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "type": "module",

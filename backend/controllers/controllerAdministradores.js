@@ -22,7 +22,7 @@ const Administradores = (req,res) =>
         {
             console.log("Conexion hecha correctamente")            
             const updateAthetes = `
-                                    select * from administradores
+                                    select * from Administradores
                                     where Matricula = ${matricula} and Contraseña = '${contrasena}' `
 
             connection.query(updateAthetes, (err, result, fields) =>

@@ -18,11 +18,11 @@ const GetAllInscripciones = (req,res) =>
         {
             console.log("Conexion hecha correctamente")
             const searchInscription = ` SELECT *
-                                        FROM inscripciones
-                                        INNER JOIN deportistas 
-                                        ON deportistas.Matricula = inscripciones.matricula
-                                        INNER JOIN deportes
-                                        on deportes.Id_deporte = inscripciones.Id_deporte
+                                        FROM Inscripciones
+                                        INNER JOIN Deportistas 
+                                        ON Deportistas.Matricula = Inscripciones.Matricula
+                                        INNER JOIN Deportes
+                                        on Deportes.Id_deporte = Inscripciones.Id_deporte
                                         `
 
             connection.query(searchInscription, (err, result, fields) =>
@@ -78,12 +78,12 @@ const GetInscripcionID = (req,res) =>
 
             const searchInscription =   `
                                         SELECT *
-                                        FROM inscripciones
-                                        INNER JOIN deportistas 
-                                        ON deportistas.Matricula = inscripciones.matricula
-                                        INNER JOIN deportes
-                                        on deportes.Id_deporte = inscripciones.Id_deporte
-                                        where inscripciones.matricula = ${matricula}
+                                        FROM Inscripciones
+                                        INNER JOIN Deportistas 
+                                        ON Deportistas.Matricula = Inscripciones.Matricula
+                                        INNER JOIN Deportes
+                                        on Deportes.Id_deporte = Inscripciones.Id_deporte
+                                        where Inscripciones.Matricula = ${matricula}
                                         `
             connection.query(searchInscription, (err, result, fields) =>
             {
@@ -117,7 +117,6 @@ const GetInscripcionID = (req,res) =>
     })
 }
 
-
 // Busca una inscripcion por el id del deporte
 const GetInscripcionIDDeporte = (req,res) =>
 {  
@@ -136,12 +135,12 @@ const GetInscripcionIDDeporte = (req,res) =>
         {
             console.log("Conexion hecha correctamente")
             const searchInscription = ` SELECT *
-                                        FROM inscripciones
-                                        INNER JOIN deportistas 
-                                        ON deportistas.Matricula = inscripciones.matricula
-                                        INNER JOIN deportes
-                                        on deportes.Id_deporte = inscripciones.Id_deporte
-                                        where inscripciones.Id_deporte = ${idDeporte}`
+                                        FROM Inscripciones
+                                        INNER JOIN Deportistas 
+                                        ON Deportistas.Matricula = Inscripciones.Matricula
+                                        INNER JOIN Deportes
+                                        on Deportes.Id_deporte = Inscripciones.Id_deporte
+                                        where Inscripciones.Id_deporte = ${idDeporte}`
 
             connection.query(searchInscription, (err, result, fields) =>
             {
@@ -196,7 +195,7 @@ const PostInscripcion = (req,res) =>
         {
             console.log("Conexion hecha correctamente")            
             const insertInscription = `
-                                    insert into inscripciones(Matricula, Id_entrenador, Id_deporte, Fecha_inscripcion, Id_administrador)
+                                    insert into Inscripciones(Matricula, Id_entrenador, Id_deporte, Fecha_inscripcion, Id_administrador)
                                     values(${matricula}, ${idEntrenador}, ${idDeporte}, '${fecha}', ${idAdministrador})
                                      `
 
@@ -242,7 +241,7 @@ const DeleteInscripcion = (req,res) =>
         {
             console.log("Conexion hecha correctamente")            
             const deleteInscription = `
-                                    delete from inscripciones
+                                    delete from Inscripciones
                                     where Id_inscripcion = ${idInscripcion}
                                     `
 
