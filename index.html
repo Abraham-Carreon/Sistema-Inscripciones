@@ -1,17 +1,54 @@
+</html>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="/css/estilos.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Incio del proyecto </title>
-</head>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title> Login </title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+      <link rel="stylesheet" href="/css/estilos.css">
+  </head>
+  <body>
 
-<body>
-    
+    <div class="box has-text-centered">
 
+        <img class="has-text-center" src="/Diseños/Iconos/user.png" alt="Imagen usuario">
+
+        <div class="box has-text-centered">
+
+            <form>
+
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input id="matricula" class="input" type="number" placeholder="Matricula" required >
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input id="contrasena" class="input" type="password" placeholder="Contraseña" required>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <input id="enviar" type="submit" class="button is-success" value="Ingresar">
+                </input>
+                </p>
+              </div>
+
+            </form>
+        </div>
+        
+    </div>
     <script src="/js/index.js"></script>
 
-</body>
-
+  </body>
 </html>
