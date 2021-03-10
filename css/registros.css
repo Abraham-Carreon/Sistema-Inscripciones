@@ -15,7 +15,6 @@ button.button is-primary{
 }
 
 div.borce{
-    border: 3px solid Black;
     width: 1000px;
     margin: auto;
     height: 600px;
@@ -28,4 +27,9 @@ table.table is-bordered{
 p.insc{
     font-size: 40px;
     text-align: center;
+}
+
+div.box{
+    margin: auto;
+    width: 1000px;
 }
