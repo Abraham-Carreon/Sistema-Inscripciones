@@ -51,6 +51,7 @@ div.borce{
     height: 600px;
 }
 
-table.table is-bordered{
-
+div.box{
+    margin: auto;
+    width: 1000px;
 }
