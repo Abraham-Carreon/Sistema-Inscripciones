@@ -1,8 +1,12 @@
 import express from 'express'
+import cors from 'cors'
 import router from './routes/index.js'
 
 const app = express()
 const port = process.env.PORT || 5000
+
+// Evita problemas de cors
+app.use(cors())
 
 // Sirve para decodificar el json
 app.use(express.json())

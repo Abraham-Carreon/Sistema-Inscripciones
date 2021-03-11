@@ -27,7 +27,10 @@ async function validar() {
               if (res.ok) 
               {
                 alert("Usuario validado")
+                // Direcciona a la pagina principal
                 window.location.href = "/src/principal.html"
+                // Agrega la matricula del administrador al session storage
+                guardarEnStorage(matricula.value)
             } 
                 else {
                 alert("El usuario no existe, intente nuevamente")
@@ -43,4 +46,7 @@ async function validar() {
     } 
 }
 
-
+function guardarEnStorage(matricula)
+{
+    sessionStorage.setItem("administrador", matricula)
+}
