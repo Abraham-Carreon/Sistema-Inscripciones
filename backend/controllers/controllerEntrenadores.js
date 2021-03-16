@@ -17,7 +17,7 @@ const entrenadores = (req,res) =>
         {
             console.log("Conexion hecha correctamente")
 
-            const selectTrainers = `select * from entrenadores`
+            const selectTrainers = `select * from Entrenadores`
             connection.query(selectTrainers, (err, result, fields) =>
             {
                 if (err) 

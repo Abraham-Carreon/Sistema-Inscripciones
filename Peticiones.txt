@@ -1,0 +1,184 @@
+Get Entrenadores
+https://backend-inscripciones.herokuapp.com/api/entrenadores
+Obtiene todos los entrenadores
+
+Despliega este formato
+[
+    {
+        "Id_entrenador": 1,
+        "Nombre": "Alexis Tobon"
+    },
+    {
+        "Id_entrenador": 2,
+        "Nombre": "Fernando Álvarez Pérez"
+    },
+    {
+        "Id_entrenador": 3,
+        "Nombre": "Everardo García Montelongo"
+    },
+    {
+        "Id_entrenador": 4,
+        "Nombre": "Adrian Luna"
+    },
+    {
+        "Id_entrenador": 5,
+        "Nombre": "Federico Sánchez Domínguez"
+    },
+    {
+        "Id_entrenador": 6,
+        "Nombre": "Juan Carlos Sánchez Sosa"
+    }
+]
+
+Get Deportes
+https://backend-inscripciones.herokuapp.com/api/deportes
+Obtiene a todos los entrenadores, el formato es parecido al de arriba
+[
+    {
+        "Id_deporte": 1,
+        "Nombre_deporte": "Imua"
+    },
+    {
+        "Id_deporte": 2,
+        "Nombre_deporte": "Taekwondo"
+    },
+    {
+        "Id_deporte": 3,
+        "Nombre_deporte": "Judo"
+    },
+    {
+        "Id_deporte": 4,
+        "Nombre_deporte": "Lucha Olimpica"
+    },
+    {
+        "Id_deporte": 5,
+        "Nombre_deporte": "Baloncesto"
+    },
+    {
+        "Id_deporte": 6,
+        "Nombre_deporte": "Futbol"
+    }
+]
+
+Get Deportista
+Obtiene a un deportista por su matricula, el ultimo numero es la matricula
+https://backend-inscripciones.herokuapp.com/api/deportistas/1953829
+
+Obtiene los datos
+[
+    {
+        "Matricula": 1953829,
+        "Nombre": "Abraham Alejandro Carreon",
+        "Grupo": 612,
+        "Semestre": 6,
+        "Correo": "abraham@gmail.com"
+    }
+]
+
+Get Inscripcion
+Obtiene las inscripciones por la matricula, el ultimo numero es la matricula a buscar
+https://backend-inscripciones.herokuapp.com/api/inscripciones/1953829
+Obtiene un formato parecido, dependiendo del numero de inscripciones
+[
+    {
+        "Id_inscripcion": 1,
+        "Matricula": 1953829,
+        "Id_entrenador": 1,
+        "Id_deporte": 1,
+        "Fecha_inscripcion": "2021-02-17T00:00:00.000Z",
+        "Id_administrador": 1946218,
+        "Nombre": "Abraham Alejandro Carreon",
+        "Grupo": 612,
+        "Semestre": 6,
+        "Correo": "abraham@gmail.com",
+        "Nombre_deporte": "Imua"
+    },
+    {
+        "Id_inscripcion": 3,
+        "Matricula": 1953829,
+        "Id_entrenador": 3,
+        "Id_deporte": 4,
+        "Fecha_inscripcion": "2021-02-11T00:00:00.000Z",
+        "Id_administrador": 1946218,
+        "Nombre": "Abraham Alejandro Carreon",
+        "Grupo": 612,
+        "Semestre": 6,
+        "Correo": "abraham@gmail.com",
+        "Nombre_deporte": "Lucha Olimpica"
+    }
+]
+
+Get inscripciones
+Obtiene todas las inscripciones por el id del deporte, el  ultimo dato es el id del deporta a buscar
+https://backend-inscripciones.herokuapp.com/api/inscripciones/deporte/1
+
+El formato de los datos de la inscripcion es este
+[
+    {
+        "Id_inscripcion": 1,
+        "Matricula": 1953829,
+        "Id_entrenador": 1,
+        "Id_deporte": 1,
+        "Fecha_inscripcion": "2021-02-17T00:00:00.000Z",
+        "Id_administrador": 1946218,
+        "Nombre": "Abraham Alejandro Carreon",
+        "Grupo": 612,
+        "Semestre": 6,
+        "Correo": "abraham@gmail.com",
+        "Nombre_deporte": "Imua"
+    }
+]
+
+Get inscripciones
+Busca todas las inscripciones
+https://backend-inscripciones.herokuapp.com/api/inscripciones/
+
+El formato es el mismo de los de arriba 
+
+[
+    {
+        "Id_inscripcion": 1,
+        "Matricula": 1953829,
+        "Id_entrenador": 1,
+        "Id_deporte": 1,
+        "Fecha_inscripcion": "2021-02-17T00:00:00.000Z",
+        "Id_administrador": 1946218,
+        "Nombre": "Abraham Alejandro Carreon",
+        "Grupo": 612,
+        "Semestre": 6,
+        "Correo": "abraham@gmail.com",
+        "Nombre_deporte": "Imua"
+    }
+]
+
+PUT Deportista
+Actualiza los datos del deportista
+https://backend-inscripciones.herokuapp.com/api/deportistas/1953829
+
+El formato para mandar los datos es este
+
+{
+    "matricula": 1953829,
+    "nombre": "Abraham Alejandro Carreon",
+    "grupo": 612,
+    "semestre": 6,
+    "correo": "abraham@gmail.com"
+}
+
+POST Inscripcion
+Agrega una inscripcion a la base de datos
+https://backend-inscripciones.herokuapp.com/api/inscripcion/
+
+El formato para mandar los dato es este
+
+{
+    "matricula": 1953829,
+    "idEntrenador": 3,
+    "idDeporte": 4,
+    "idAdministrador": 1946218
+}
+
+Delete Inscripcion
+Elimina una inscripcion por el id de la inscripcion, el ultimo dato es el id de la inscripcion
+https://backend-inscripciones.herokuapp.com/api/inscripcion/1
+Retorna si se hizo correctamente o no 

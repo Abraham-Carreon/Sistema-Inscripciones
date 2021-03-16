@@ -19,7 +19,7 @@ const GetDeportistasID = (req,res) =>
         {
             console.log("Conexion hecha correctamente")
 
-            const selectAthletes = `select * from deportistas where Matricula = ${matricula}`
+            const selectAthletes = `select * from Deportistas where Matricula = ${matricula}`
             connection.query(selectAthletes, (err, result, fields) =>
             {
                 if (err) 
@@ -74,7 +74,7 @@ const PutDeportistasID = (req,res) =>
         {
             console.log("Conexion hecha correctamente")            
             const updateAthletes = `
-                                    update deportistas 
+                                    update Deportistas 
                                     set Matricula = ${matricula}, 
                                     Nombre = '${nombre}', 
                                     Grupo = ${grupo}, 
