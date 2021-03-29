@@ -1,0 +1,20 @@
+En editar datos cambiar el nombre a buscar inscripciones
+-- Llenar con los datos que se dan la tabla, "mira la vista"
+--Hacer condiciones, si solo se ingresa la matricula, buscar inscripciones por la matricula
+-- Si solo se agrega el deporte, buscar inscripciones por el deporte
+-- Si no se agrega ninguno, buscar a todas las inscripciones
+-- Al final agregar el boton de eliminar inscripcion, en cada boton agregar el id de la inscripcion, 
+para cuando se de click, mostrar una confirm diciendo los datos de la inscripcion a eliminar, si se da click a aceptar, 
+mandar la peticion a eliminarla con el id de la inscripcion y despues de eso recargar la pagina.
+
+En registros crear una ventana modal como la que esta en las vistas de inscripcion.png
+--Cuando se llenen los datos de la inscripcion se tendra que lanzar la modal haciendo una peticion 
+y con los datos que retorne del que se quiere inscribir, pornerlos en la ventana modal, 
+dependiendo de la respuesta de los botones de la ventana modal, hacer la inscripcion o cerrar la ventana.
+
+En update user al darle click a buscar, se tiene que validar que haya ingresado la matricula,
+despues se hace la peticion para buscar los datos, y se llenan los campos con el resultado,
+despues cuando se editen los datos, al darle click al boton aceptar hacer la peticion para actualizar con los datos que haya llenado,
+se tiene que validar que todos los campos tengan datos.
+
+Crear otro apartado usando la plantilla de editar datos, mirar la vista de descargar.png
