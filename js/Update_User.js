@@ -3,7 +3,7 @@
     function validar()
     {
         var matricula = document.getElementById("matricula");
-
+                  
         if (matricula == 1946342 || matricula == 1953829 || matricula == 1946218 || matricula == 1956753 || matricula == 1946887 || matricula == 1966811) 
         {
             document.body.style.background = "none"
@@ -16,4 +16,4 @@
         }
     }
 
-    boton.addEventListener('click', validar)
+    boton.addEventListener('click', validar)    

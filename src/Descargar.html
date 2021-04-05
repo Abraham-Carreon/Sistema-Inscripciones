@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registros</title>
+    <title>Descargar Inscripciones</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="/css/registros.css">
+    <link rel="stylesheet" href="/css/Inscripcion.css">
   </head>
   <body>
     <br>
@@ -14,7 +14,7 @@
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="/index.html">
-            <div class="borhome"><img class="text-center" src="../Diseños/Iconos/Home.png"></div>
+            <div class="borhome"><img class="text-center" src="/Diseños/Iconos/Home.png"></div>
           </a>
       
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -27,7 +27,7 @@
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item">
-              <img class="text-center" src="../Diseños/Iconos/Descarga.png">
+              <img class="text-center" src="/Diseños/Iconos/Descarga.png">
             </a>
       
             <a class="navbar-item">
@@ -39,7 +39,7 @@
             </a>
   
             <a class="navbar-item">
-            <img class="text-center" src="../Diseños/Iconos/Registro.png">
+            <img class="text-center" src="/Diseños/Iconos/Registro.png">
             </a>
             <div class="derechas">
             <p><b>Usuario:</b></p>
@@ -54,22 +54,16 @@
     <br>
     <br>
     <br>
-    <div class="borce">
     <br>
-    <br>
+
     <div class="box">
-    <p class="insc">Inscripciones</p>
-    <br>
-    <br>
-    <center><b>Matricula:</b></center>
-    <div class="control">
-        <input id="matricula" class="input" type="number" placeholder="---Ingrese su matricula---">
-    </div>
+    <div class="borce">
+
     <br>
     <br>
     <center><p><b>Deporte:</b></p></center>
-    <div id="deporte" class="control">
-      <div  class="select">
+    <div id="Deporte" class="control">
+      <div class="select">
         <select>
           <option>---Seleccione una opcion---</option>
           <option>Imua</option>
@@ -80,24 +74,46 @@
           <option>Futbol</option>
         </select>
       </div>
-      <br>
-      <br>
-      <center><p><b>Instructor:</b></p></center>
-      <div id="instructor" class="control">
-        <div  class="select">
-          <select>
-            <option>---Seleccione una opcion---</option>
-            <option>Alexis Tobon</option>
-          </select>
-        </div>
-    <br>
     <br>
     <br>
     <div class="control">
-      <center><button id="aceptar" class="button is-primary">Aceptar</button></center>
+      <center><button id="buscar" type="button" class="button is-primary">Buscar</button></center>
     </div>
+    <br>
+    <div class="control">
+        <center><button id="buscar" type="button" class="button is-primary">Descargar</button></center>
+      </div>
+  </div>
+  <br>
+  <br>
+  <center>
+  <table class="table is-bordered"> 
+    <tr>
+      <th>Matricula</th>
+      <th>Nombre</th>
+      <th>Semestre</th>
+      <th>Deporte</th>
+    </tr>
+    <tr>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+    </tr>
+    <tr>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+    </tr>
+    <tr>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+      <td>Ejemplo</td>
+    </tr>
+  </table>
+</center>
 </div>
-</div>
-<script src="/js/registros.js"></script>
   </body>
 </html>
