@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inscritos</title>
+    <title>buscar Inscripciones</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="/css/Inscripcion.css">
   </head>
@@ -60,12 +60,12 @@
     <div class="borce">
     <center><p><b>Matricula:</b></p></center>
     <div class="control">
-      <input class="input" type="number" placeholder="---Ingrese su matricula---">
+      <input id="Matricula" class="input" type="number" placeholder="---Ingrese su matricula---" required>
     </div>
     <br>
     <br>
     <center><p><b>Deporte:</b></p></center>
-    <div class="control">
+    <div id="Deporte" class="control">
       <div class="select">
         <select>
           <option>---Seleccione una opcion---</option>
@@ -80,7 +80,7 @@
     <br>
     <br>
     <div class="control">
-      <center><button class="button is-primary">Buscar</button></center>
+      <center><button id="buscar" type="button" class="button is-primary">Buscar</button></center>
     </div>
   </div>
   <br>
@@ -92,27 +92,44 @@
       <th>Nombre</th>
       <th>Semestre</th>
       <th>Deporte</th>
+      <th>Eliminar Inscripcion</th>
     </tr>
     <tr>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
+      <td>
+        <div class="buttons">
+        <button class="button is-danger">Eliminar</button>
+        </div>
+      </td>
     </tr>
     <tr>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
+      <td>
+        <div class="buttons">
+        <button class="button is-danger">Eliminar</button>
+        </div>
+        </td>
     </tr>
     <tr>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
       <td>Ejemplo</td>
+      <td>
+        <div class="buttons">
+        <button class="button is-danger">Eliminar</button>
+        </div>
+      </td>
     </tr>
   </table>
 </center>
 </div>
+<script src="/js/buscar_inscripciones.js"></script>
   </body>
 </html>
