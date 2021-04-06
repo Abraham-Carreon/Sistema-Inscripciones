@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Editar datos</title>
+    <title>Llenado de datos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="/css/Actualizacion_Usuarios.css">
   </head>
@@ -61,56 +61,50 @@
       <div class="color">
         <div class="margin">
         <div class="field">
-          <label class="label">Editar Datos</label>
-          <label class="label">Matricula</label>
-          <div class="control">
-            <input id="matricula" class="input input2" type="number" placeholder="Ej. 0000000">
-          </div>
         </div>
       </div>
       <br>
   
-      <div class="control">
-        <button id="mybutton" class="button is-info">Buscar</button>
-      </div>
+
     </div>
   
     <div>
       <div class="field">
-        <label class="label">Nombre</label>
+        <label class="label">Matricula</label>
         <div class="control">
-          <input id="class="input imput2 text-center" type="text" >
+          <input id="matricula" name="matricula" class="input imput2 text-center" type="number" >
         </div>
       </div>
   
       <div class="field">
-        <label class="label">Grupo</label>
+        <label class="label">Nombre</label>
         <div class="control">
-          <input class="input imput2 text-center" type="number" >
-        </div>
+            <input id="nombre" name="nombre" class="input imput2 text-center" type="email" >
+          </div>
       </div>
   
       <div class="field">
         <label class="label">Semestre</label>
         <div class="control">
-          <input class="input imput2 text-center" type="number" >
-        </div>
+            <input id="semestre" name="semestre" class="input imput2 text-center" type="number" >
+          </div>
       </div>
   
       <div class="field">
-        <label class="label">Correo Electronico</label>
+        <label class="label">Deporte</label>
         <div class="control">
-          <input class="input imput2 text-center" type="email" >
+          <input id="deporte" name="deporte" class="input imput2 text-center" type="email" >
         </div>
       </div>
       <div class="control">
-        <button class="button is-danger">Cancelar</button><p></p><br><button class="button is-info">Aceptar</button>
+        <button id="cancelar" class="button is-danger">Cancelar</button><p></p><br>
+        <button id="aceptar" class="button is-info">Aceptar</button>
       </div>  
       </div>
     </div>
   </div>
 
-  <script src="/js/Update_User.js"></script>
+  <script src="/js/ventana_emergente.js"></script>
 
   </body>
 </html>
