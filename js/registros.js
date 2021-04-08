@@ -6,12 +6,12 @@ boton.addEventListener('click', validar)
 async function validar()
 {
     const matricula=document.getElementById("matricula")
-    /*if (matricula == 1) 
+    if (matricula == "" || deporte == "" || instructor == "") 
     {
-        alert("Matricula incorrecta, verifique de nuevo")
+        alert("Algun dato no esta lleno, verifique de nuevo")
     }
     else
-    */{
+    {
         /*alert("Matricula correcta")
         window.open("/src/Inscripcion_vemergente.html" , "ventana1" , "width=1000,height=600,scrollbars=NO")*/
         const url = "https://backend-inscripciones.herokuapp.com/api/deportes"
@@ -21,7 +21,7 @@ async function validar()
             instructor
         }
 
-       fetch('https://backend-inscripciones.herokuapp.com/api/inscripciones/', {
+       fetch('https://backend-inscripciones.herokuapp.com/api/inscripcion/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

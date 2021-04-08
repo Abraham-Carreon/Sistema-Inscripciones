@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let semestre = document.querySelector('#semestre').value
         let correo = document.querySelector('#correo').value*/
 
-        if(nombre.value == "" || grupo.value == "" || semestre.value == "" || correo.value == "")
+        if(nombre == "" || grupo == "" || semestre == "" || correo == "")
         {
             alert("Formulario incompleto, llene las credenciales correctamente")
         }
