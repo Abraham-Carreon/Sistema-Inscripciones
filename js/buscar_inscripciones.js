@@ -157,9 +157,9 @@ function agregarDeportes()
 
 async function eliminar()
 {
-    const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/${id_inscripcion.value}`
-    const id_inscripcion = document.querySelector("#id_inscripcion")
-    id_inscripcion = inscripcion.Id_inscripcion
+    let id_inscripcion = inscripcion.id_inscripcion
+    const url = `https://backend-inscripciones.herokuapp.com/api/inscripcion/${id_inscripcion}`
+
             fetch(url, {
                     method: 'DELETE',
                     headers: {
