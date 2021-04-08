@@ -46,8 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let semestre = document.querySelector('#semestre').value
         let correo = document.querySelector('#correo').value*/
 
-        /*if(nombre.indexOf(" ") === -1 || grupo.indexOf(" ") === -1 || semestre.indexOf(" ") === -1 || correo.indexOf(" ") === -1 )
-        */{
+        if(nombre.value == "" || grupo.value == "" || semestre.value == "" || correo.value == "")
+        {
+            alert("Formulario incompleto, llene las credenciales correctamente")
+        }
+        
+        else
+        {
             const datos = {
                 matricula,
                 nombre,
@@ -78,11 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => console.log('Success:', response))
                 .catch(error => console.error('Error:', error))
         }
-        
-        /*else
-        {
-            alert("Formulario incompleto, llene las credenciales correctamente")
-        }*/
     }
 
 
