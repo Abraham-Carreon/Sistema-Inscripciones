@@ -6,33 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
     async function validar()
 {
     //hola
-    const matricula=document.getElementById("matricula")
-    if(matricula.value == "")
-    {
-        if(deporte.value !== "---Seleccione una opcion---")
-        {
-            alert("Perfecto")
-        }
-        else
-        {
-            if(instructor.value !== "---Seleccione una opcion---")
-            {
-                alert("Perfecto")
-            }
-            else
-            {
-                alert("Falta un parametro")
-            }
-        }
-    }
-    else
+    const matricula=document.querySelector("#matricula").value
+    const deporte=document.querySelector("#deporte").value
+    const instructor=document.querySelector("#deporte").value
+    if(matricula == "" || deporte == "---Seleccione una opcion---" || instructor == "---Seleccione una opcion---")
     {
         alert("Falta un parametro")
     }
-    if (matricula == 1) 
+    else
     {
-        /*alert("Matricula correcta")
-        window.open("/src/Inscripcion_vemergente.html" , "ventana1" , "width=1000,height=600,scrollbars=NO")*/
+        alert("Datos correctos")
+        window.open("/src/Inscripcion_vemergente.html" , "ventana1" , "width=1000,height=600,scrollbars=NO")
         const url = "https://backend-inscripciones.herokuapp.com/api/deportes"
         const datos = {
             matricula,
@@ -64,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => console.log('Success:', response))
             .catch(error => console.error('Error:', error))
-
     }
 }
 boton.addEventListener("click",validar)
