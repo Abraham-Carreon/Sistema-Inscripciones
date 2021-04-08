@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    agregarMatricula()
     const boton = document.getElementById("mybutton")
     const btnInscripcion = document.getElementById('enviarInscripcion')
     const btnCancelar = document.getElementById("cancelarInscripcion")
@@ -91,3 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
     btnInscripcion.addEventListener('click', actualizarDatos)
     btnCancelar.addEventListener('click', cancelar)
 })
+
+function agregarMatricula()
+{
+    const id = document.getElementById('identificador')
+    const matricula = sessionStorage.getItem('administrador')
+    id.innerHTML = `<b>Matricula: ${matricula}</b>`
+}

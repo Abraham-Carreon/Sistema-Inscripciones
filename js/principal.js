@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => 
 {
+    agregarMatricula()
     validarAdministrador()
 })
 
@@ -13,4 +14,11 @@ function validarAdministrador()
         alert("No esta validado, ingrese sus credenciales")
         window.location.href = "/index.html"
     }
+}
+
+function agregarMatricula()
+{
+    const id = document.getElementById('identificador')
+    const matricula = sessionStorage.getItem('administrador')
+    id.innerHTML = `<b>Matricula: ${matricula}</b>`
 }
