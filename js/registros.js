@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     agregarMatricula()
     const boton = document.getElementById("aceptar")
 
-
+    // mod 
     async function validar() {
         let matricula = document.querySelector("#matricula")
         const deporte = document.querySelector("#deporte")
