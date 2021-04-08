@@ -105,9 +105,34 @@ document.addEventListener('DOMContentLoaded', () => {
             })
     }
     }
-   }
-
+    if(deportes.value !== "" || matricula.value !== "")
+    {
+        const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/`
+            const request = await fetch(url)
+            const response = await request.json()
+            crearDatosTabla(data)
+            function crearDatosTabla(datos)
+    {
+        const tabla = document.getElementById('inscripciones')
+        datos.forEach(inscripcion =>
+            {
+                const fila = document.createElement('tr')
+                const columnaMatricula = document.createElement('td')
+                const columnaNombre = document.createElement('td')
+                const columnaSemestre = document.createElement('td')
+                const columnaDeporte = document.createElement('td')
     
+                columnaMatricula.textContent = inscripcion.Matricula
+                columnaNombre.textContent = inscripcion.Nombre
+                columnaSemestre.textContent = inscripcion.Semestre
+                columnaDeporte.textContent = inscripcion.Nombre_deporte
+                fila.append(columnaMatricula, columnaNombre, columnaSemestre, columnaDeporte)
+                tabla.appendChild(fila)
+                
+            })
+    }
+   }
+   }
     boton.addEventListener('click', buscar)
 })
 
@@ -129,7 +154,43 @@ function agregarDeportes()
                     })
     }
 
+// async function eliminar()
+// {
+//     columnaMatricula.textContent = inscripcion.Matricula
+//     columnaNombre.textContent = inscripcion.Nombre
+//     columnaSemestre.textContent = inscripcion.Semestre
+//     columnaDeporte.textContent = inscripcion.Nombre_deporte
 
+
+//     const datos = {
+//         columnaMatricula,
+//         columnaNombre,
+//         columnaSemestre,
+//         columnaDeporte, 
+//     }
+//     const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/${id_inscripcion}`
+//             fetch(url, {
+//                     method: 'DELETE', // or 'PUT'
+//                     body: JSON.stringify(datos), // data can be `string` or {object}!
+//                     headers: {
+//                         'Content-Type': 'application/json'
+//                     }
+//                 }).then(res => {
+//                     res.json()
+//                     if (res.ok) {
+//                         alert(`Usuario con la matricula: ${matricula} ha sido actualizado`)
+//                         window.location.reload()
+//                     } else {
+//                         alert("No fue actualizado")
+//                         nombre.value = ""
+//                         grupo.value = ""
+//                         semestre.value = ""
+//                         correo.value = ""
+//                     }
+//                 })
+//                 .then(response => console.log('Success:', response))
+//                 .catch(error => console.error('Error:', error))
+// }
 
 
 
