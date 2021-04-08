@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // agregarDeportes()
     agregarDeportes()
     const boton = document.getElementById("buscar")
-
+    const boton1 = document.getElementById("id_inscripcion")
     async function buscar() {
         let matricula = document.querySelector("#Matricula")
 
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else
         {
-            alert("Selecciona algun deporte")
+            alert("Selecciona algun deporte o ingresa una matricula")
         }
     
     function crearDatosTabla(datos)
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/`
             const request = await fetch(url)
             const response = await request.json()
-            crearDatosTabla(data)
+
             function crearDatosTabla(datos)
     {
         const tabla = document.getElementById('inscripciones')
@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
    }
    }
     boton.addEventListener('click', buscar)
+    boton1.addEventListener('click', eliminar)
 })
 
 function agregarDeportes()
@@ -154,43 +155,33 @@ function agregarDeportes()
                     })
     }
 
-// async function eliminar()
-// {
-//     columnaMatricula.textContent = inscripcion.Matricula
-//     columnaNombre.textContent = inscripcion.Nombre
-//     columnaSemestre.textContent = inscripcion.Semestre
-//     columnaDeporte.textContent = inscripcion.Nombre_deporte
-
-
-//     const datos = {
-//         columnaMatricula,
-//         columnaNombre,
-//         columnaSemestre,
-//         columnaDeporte, 
-//     }
-//     const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/${id_inscripcion}`
-//             fetch(url, {
-//                     method: 'DELETE', // or 'PUT'
-//                     body: JSON.stringify(datos), // data can be `string` or {object}!
-//                     headers: {
-//                         'Content-Type': 'application/json'
-//                     }
-//                 }).then(res => {
-//                     res.json()
-//                     if (res.ok) {
-//                         alert(`Usuario con la matricula: ${matricula} ha sido actualizado`)
-//                         window.location.reload()
-//                     } else {
-//                         alert("No fue actualizado")
-//                         nombre.value = ""
-//                         grupo.value = ""
-//                         semestre.value = ""
-//                         correo.value = ""
-//                     }
-//                 })
-//                 .then(response => console.log('Success:', response))
-//                 .catch(error => console.error('Error:', error))
-// }
+async function eliminar()
+{
+    const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/${id_inscripcion.value}`
+    const id_inscripcion = document.querySelector("#id_inscripcion")
+    id_inscripcion = inscripcion.Id_inscripcion
+            fetch(url, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => {
+                    res.json()
+                    if (res.ok) {
+                        alert(`Inscripcion con la matricula: ${id_inscripcion} ha sido alminado`)
+                        window.location.reload()
+                    } else {
+                        alert("No fue eliminado")
+                        nombre.value = ""
+                        grupo.value = ""
+                        semestre.value = ""
+                        deporte.value = ""
+                    }
+                })
+                .then(response => console.log('Success:', response))
+                .catch(error => console.error('Error:', error))
+                
+}
 
 
 
