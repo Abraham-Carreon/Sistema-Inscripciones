@@ -67,6 +67,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     boton.addEventListener('click', validar)
     eliminar.addEventListener('click', funEliminar)
-
-
 })
