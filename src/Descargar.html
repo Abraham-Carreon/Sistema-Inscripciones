@@ -64,14 +64,9 @@
     <center><p><b>Deporte:</b></p></center>
     <div id="Deporte" class="control">
       <div class="select">
-        <select>
+        <select id="deportes">
           <option>---Seleccione una opcion---</option>
-          <option>Imua</option>
-          <option>Tae Kwon do</option>
-          <option>Judo</option>
-          <option>Lucha Olimpica</option>
-          <option>Balocesto</option>
-          <option>Futbol</option>
+          
         </select>
       </div>
     <br>
@@ -81,39 +76,24 @@
     </div>
     <br>
     <div class="control">
-        <center><button id="buscar" type="button" class="button is-primary">Descargar</button></center>
+        <center><button id="descargar"  type="button" class="button is-primary">Descargar</button></center>
       </div>
   </div>
   <br>
   <br>
   <center>
-  <table class="table is-bordered"> 
+  <table id="descargarInscripciones"  class="table is-bordered"> 
     <tr>
-      <th>Matricula</th>
-      <th>Nombre</th>
-      <th>Semestre</th>
-      <th>Deporte</th>
+      <td>Matricula</td>
+      <td>Nombre</td>
+      <td>Deporte</td>
+      <td>Correo</td>
     </tr>
-    <tr>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-    </tr>
-    <tr>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-    </tr>
-    <tr>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-    </tr>
+    <tbody id="inscripciones"></tbody>
   </table>
 </center>
 </div>
   </body>
+
+  <script src="../js/descargar.js"></script>
 </html>
