@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    agregarMatricula()
+
+    // validarAdministrador()
+
+    // agregarDeportes()
+    agregarDeportes()
     const boton = document.getElementById("buscar")
-    const eliminar = document.getElementById('eliminar')
-    async function validar() {
-        let matricula = document.querySelector("#matricula")
+
+    async function buscar() {
+        let matricula = document.querySelector("#Matricula")
 
         if (matricula.value !== "") {
             // document.body.style.background = "none"
@@ -11,61 +15,154 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/${matricula.value}`
             const request = await fetch(url)
             const response = await request.json()
-            if (request.ok) {
-                alert("Usuario existe")
-                const matriculad = document.querySelector('#matricula')
-                const nombre = document.querySelector('#nombre')
-                const semestre = document.querySelector('#semestre')
-                const deprote = document.querySelector('#deporte')
-
-                response.forEach(deportista => {
-                    matriculad.value = deportista.Matricula
-                    nombre.value = deportista.Nombre
-                    semestre.value = deportista.Semestre
-                    deporte.value = deportista.Nombre_deporte
-                })
-            } else {
-                alert("Usuario no existe")
+            if (!isNaN(matricula.value))
+            {
+                fetch(url)
+                    .then(res => 
+                        {
+                            if (!res.ok)
+                            {
+                                alert("No existen inscripciones")
+                                return window.location.reload()
+                            }
+                            return res.json()
+                        })
+                        .then(data => 
+                            {
+                                crearDatosTabla(data)
+                            })            
             }
-        } 
-        else 
+            else
+            {
+                alert(`No existen inscripciones con la matricula: ${matricula.value} `)
+            }
+            function crearDatosTabla(datos)
+    {
+        const tabla = document.getElementById('inscripciones')
+        datos.forEach(inscripcion =>
+            {
+                const fila = document.createElement('tr')
+                const columnaMatricula = document.createElement('td')
+                const columnaNombre = document.createElement('td')
+                const columnaSemestre = document.createElement('td')
+                const columnaDeporte = document.createElement('td')
+    
+                columnaMatricula.textContent = inscripcion.Matricula
+                columnaNombre.textContent = inscripcion.Nombre
+                columnaSemestre.textContent = inscripcion.Semestre
+                columnaDeporte.textContent = inscripcion.Nombre_deporte
+                fila.append(columnaMatricula, columnaNombre, columnaSemestre, columnaDeporte)
+                tabla.appendChild(fila)
+                
+            })
+    }
+    }
+    else
+    {
+        const deportes = parseInt(document.getElementById('deportes').value)
+    
+        if (!isNaN(deportes))
         {
-            if (deporte.value !== "") {
-                // document.body.style.background = "none"
-    
-                const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/${Nombre_deporte}`
-                const request = await fetch(url)
-                const response = await request.json()
-                if (request.ok) {
-                    alert("Usuario existe")
-                    const matriculad = document.querySelector('#matricula')
-                    const nombre = document.querySelector('#nombre')
-                    const semestre = document.querySelector('#semestre')
-                    const deprote = document.querySelector('#deporte')
-    
-                    response.forEach(deportista => {
-                        matriculad.value = deportista.Matricula
-                        nombre.value = deportista.Nombre
-                        semestre.value = deportista.Semestre
-                        deporte.value = deportista.Nombre_deporte
+            const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/deporte/${deportes}`
+            fetch(url)
+                .then(res => 
+                    {
+                        if (!res.ok)
+                        {
+                            alert("No existen inscripciones")
+                            return window.location.reload()
+                        }
+                        return res.json()
                     })
-                } else {
-                    alert("Usuario no existe")
-                }
-            } else {
-                document.body.style.background = "none"
-                alert("Deporte incorrecto, verifique de nuevo")
-            }
-            document.body.style.background = "none"
-            alert("Matricula incorrecta, verifique de nuevo")
+                    .then(data => 
+                        {
+                            crearDatosTabla(data)
+                        })            
         }
+        else
+        {
+            alert("Selecciona algun deporte")
+        }
+    
+    function crearDatosTabla(datos)
+    {
+        const tabla = document.getElementById('inscripciones')
+        datos.forEach(inscripcion =>
+            {
+                const fila = document.createElement('tr')
+                const columnaMatricula = document.createElement('td')
+                const columnaNombre = document.createElement('td')
+                const columnaSemestre = document.createElement('td')
+                const columnaDeporte = document.createElement('td')
+    
+                columnaMatricula.textContent = inscripcion.Matricula
+                columnaNombre.textContent = inscripcion.Nombre
+                columnaSemestre.textContent = inscripcion.Semestre
+                columnaDeporte.textContent = inscripcion.Nombre_deporte
+                fila.append(columnaMatricula, columnaNombre, columnaSemestre, columnaDeporte)
+                tabla.appendChild(fila)
+                
+            })
     }
-    async function funEliminar() {
-        let deporte = document.querySelector("#deportes")
-
-      
     }
+   }
 
-    boton.addEventListener('click', validar)
-    eliminar.addEventListener('click', funEliminar)
+    
+    boton.addEventListener('click', buscar)
 })
+
+function agregarDeportes()
+    {
+        const url = "https://backend-inscripciones.herokuapp.com/api/deportes"
+        fetch(url)
+            .then(res =>res.json())
+                .then(data => 
+                    {
+                        const deportes = document.getElementById('deportes')
+                        data.forEach(deporte =>
+                            {
+                                const dep = document.createElement("option")
+                                dep.textContent = deporte.Nombre_deporte
+                                dep.value = deporte.Id_deporte
+                                deportes.append(dep)                            
+                            })
+                    })
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function agregarMatricula()
+{
+    const id = document.getElementById('identificador')
+    const matricula = sessionStorage.getItem('administrador')
+    id.innerHTML = `<b>Matricula: ${matricula}</b>`
+}
+
+function validarAdministrador()
+{
+    const matricula = sessionStorage.getItem("administrador")
+    
+    if (matricula == null) 
+    {
+        document.body.style.background = "none"
+        alert("No esta validado, ingrese sus credenciales")
+        window.location.href = "src/index.html"
+    }
+}

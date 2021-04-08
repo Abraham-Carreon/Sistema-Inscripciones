@@ -58,23 +58,18 @@
 
     <div class="box">
     <div class="borce">
-    <center><p><b>Matricula:</b></p></center>
+    <center><p><b id="identidicador">Matricula:</b></p></center>
     <div class="control">
       <input id="Matricula" class="input" type="number" placeholder="---Ingrese su matricula---" required>
     </div>
     <br>
     <br>
     <center><p><b>Deporte:</b></p></center>
-    <div class="control">
-      <div id="deportes" class="select">
-        <select>
+    <div id="Deporte" class="control">
+      <div class="select">
+        <select id="deportes">
           <option>---Seleccione una opcion---</option>
-          <option>Imua</option>
-          <option>Tae Kwon do</option>
-          <option>Judo</option>
-          <option>Lucha Olimpica</option>
-          <option>Balocesto</option>
-          <option>Futbol</option>
+          
         </select>
       </div>
     <br>
@@ -86,50 +81,23 @@
   <br>
   <br>
   <center>
-  <table class="table is-bordered"> 
-    <tr>
-      <th>Matricula</th>
-      <th>Nombre</th>
-      <th>Semestre</th>
-      <th>Deporte</th>
-      <th>Eliminar Inscripcion</th>
-    </tr>
-    <tr>
-      <td><input id="matriculad"> </input></td>
-      <td><input id="nombre"> </input></td>
-      <td><input id="semestre"> </input></td>
-      <td><input id="deporte"> </input></td>
-      <td>
-        <div class="buttons">
-        <button id="eliminar" class="button is-danger">Eliminar</button>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>
-        <div class="buttons">
-        <button class="button is-danger">Eliminar</button>
-        </div>
-        </td>
-    </tr>
-    <tr>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>Ejemplo</td>
-      <td>
-        <div class="buttons">
-        <button class="button is-danger">Eliminar</button>
-        </div>
-      </td>
-    </tr>
-  </table>
+    <table id="descargarInscripciones"  class="table is-bordered"> 
+      <tr>
+        <td>Matricula</td>
+        <td>Nombre</td>
+        <td>Semestre</td>
+        <td>Deporte</td>
+      </tr>
+      <tbody id="inscripciones"></tbody>
+    </table>
 </center>
 </div>
 <script src="/js/buscar_inscripciones.js"></script>
   </body>
 </html>
+
+<td>
+  <div class="buttons">
+  <button id="eliminar" class="button is-danger">Eliminar</button>
+  </div>
+</td>
