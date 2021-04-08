@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    agregarMatricula()
     const boton = document.getElementById("buscar")
     const eliminar = document.getElementById('eliminar')
     async function validar() {

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    agregarMatricula()
 var boton = document.getElementById("aceptar")
 boton.addEventListener('click', validar) 
 
@@ -17,4 +18,11 @@ async function validar()
 }
 
 })
+
+function agregarMatricula()
+{
+    const id = document.getElementById('identificador')
+    const matricula = sessionStorage.getItem('administrador')
+    id.innerHTML = `<b>Matricula: ${matricula}</b>`
+}
 

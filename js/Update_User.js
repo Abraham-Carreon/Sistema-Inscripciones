@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    agregarMatricula()
     const boton = document.getElementById("mybutton")
     const btnInscripcion = document.getElementById('enviarInscripcion')
+    const btnCancelar = document.getElementById("cancelarInscripcion")
     async function validar() {
         let matricula = document.querySelector("#matricula")
 
@@ -39,33 +41,61 @@ document.addEventListener('DOMContentLoaded', () => {
         const semestre = document.querySelector('#semestre').value
         const correo = document.querySelector('#correo').value
 
-        const datos = {
-            matricula,
-            nombre,
-            grupo,
-            semestre, 
-            correo
+            const datos = {
+                matricula,
+                nombre,
+                grupo,
+                semestre, 
+                correo
+            }
+            if(nombre.value == null)
+            {
+                alert("Falta algún dato, verifique de nuevo")
+            }
+            else{
+            const url = `https://backend-inscripciones.herokuapp.com/api/deportistas/${matricula}`
+            fetch(url, {
+                    method: 'PUT', // or 'PUT'
+                    body: JSON.stringify(datos), // data can be `string` or {object}!
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => {
+                    res.json()
+                    if (res.ok) {
+                        alert(`Usuario con la matricula: ${matricula} ha sido actualizado`)
+                        window.location.reload()
+                    } else {
+                        alert("No fue actualizado")
+                        nombre.value = ""
+                        grupo.value = ""
+                        semestre.value = ""
+                        correo.value = ""
+                    }
+                })
+                .then(response => console.log('Success:', response))
+                .catch(error => console.error('Error:', error))
         }
-        const url = `https://backend-inscripciones.herokuapp.com/api/deportistas/${matricula}`
-        fetch(url, {
-                method: 'PUT', // or 'PUT'
-                body: JSON.stringify(datos), // data can be `string` or {object}!
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(res => {
-                res.json()
-                if (res.ok) {
-                    alert(`Usuario con la matricula: ${matricula} ha sido actualizado`)
-                    window.location.reload()
-                } else {
-                    alert("No fue actualizado")
-                }
-            })
-            .then(response => console.log('Success:', response))
-            .catch(error => console.error('Error:', error))
+        }
+
+
+
+    async function cancelar()
+    {
+        alert(`Operacion cancelada`)
+        window.location.reload()
     }
+
+
 
     boton.addEventListener('click', validar)
     btnInscripcion.addEventListener('click', actualizarDatos)
+    btnCancelar.addEventListener('click', cancelar)
 })
+
+function agregarMatricula()
+{
+    const id = document.getElementById('identificador')
+    const matricula = sessionStorage.getItem('administrador')
+    id.innerHTML = `<b>Matricula: ${matricula}</b>`
+}
