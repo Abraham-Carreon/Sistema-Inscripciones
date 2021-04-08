@@ -1,23 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
     agregarMatricula()
-var boton = document.getElementById("aceptar")
-boton.addEventListener('click', validar) 
+    const boton = document.getElementById("aceptar")
 
-async function validar()
-{
-    const matricula=document.getElementById("matricula")
-    if (matricula == 1) 
+
+    async function validar() {
+        let matricula = document.querySelector("#matricula")
+        const deporte = document.querySelector("#deporte")
+        const instructor = document.querySelector("#instructor")
+    if(matricula.value == "")
     {
-        alert("Matricula incorrecta, verifique de nuevo")
+        if(deporte.value !== "---Seleccione una opcion---")
+        {
+            alert("Perfecto")
+        }
+        else
+        {
+            if(instructor.value !== "---Seleccione una opcion---")
+            {
+                alert("Perfecto")
+            }
+            else
+            {
+                alert("Falta un parametro")
+            }
+        }
     }
     else
     {
-        alert("Matricula correcta")
-        window.open("/src/Inscripcion_vemergente.html" , "ventana1" , "width=1000,height=600,scrollbars=NO")
+        alert("Falta un parametro")
     }
-}
-
+    }
+    boton.addEventListener('click', validar)
 })
+
+
+
+
 
 function agregarMatricula()
 {
