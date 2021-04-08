@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    agregarMatricula()
+    // agregarMatricula()
     const boton = document.getElementById("mybutton")
     const btnInscripcion = document.getElementById('enviarInscripcion')
     const btnCancelar = document.getElementById("cancelarInscripcion")
@@ -41,6 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const semestre = document.querySelector('#semestre').value
         const correo = document.querySelector('#correo').value
 
+        /*let nombre = document.querySelector("#nombre").value
+        let grupo = document.querySelector('#grupo').value
+        let semestre = document.querySelector('#semestre').value
+        let correo = document.querySelector('#correo').value*/
+
+        if(nombre == "" || grupo == "" || semestre == "" || correo == "")
+        {
+            alert("Formulario incompleto, llene las credenciales correctamente")
+        }
+        
+        else
+        {
             const datos = {
                 matricula,
                 nombre,
@@ -48,11 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 semestre, 
                 correo
             }
-            if(nombre.value == null)
-            {
-                alert("Falta algún dato, verifique de nuevo")
-            }
-            else{
             const url = `https://backend-inscripciones.herokuapp.com/api/deportistas/${matricula}`
             fetch(url, {
                     method: 'PUT', // or 'PUT'
@@ -76,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => console.log('Success:', response))
                 .catch(error => console.error('Error:', error))
         }
-        }
+    }
 
 
 
@@ -93,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCancelar.addEventListener('click', cancelar)
 })
 
-function agregarMatricula()
+/*function agregarMatricula()
 {
     const id = document.getElementById('identificador')
     const matricula = sessionStorage.getItem('administrador')
     id.innerHTML = `<b>Matricula: ${matricula}</b>`
-}
+}*/

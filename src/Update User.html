@@ -64,7 +64,7 @@
           <label class="label">Editar Datos</label>
           <label class="label">Matricula</label>
           <div class="control">
-            <input id="matricula" class="input input2" type="number" placeholder="Ej. 0000000" required>
+            <input id="matricula" class="input input2" type="number" placeholder="Ej. 0000000">
           </div>
         </div>
       </div>
@@ -79,32 +79,32 @@
       <div class="field">
         <label class="label">Nombre</label>
         <div class="control">
-          <input id="nombre" class="input imput2 text-center" type="text" required>
+          <input id="nombre" class="input imput2 text-center" type="text" title="Es obligatorio que ingrese su nombre" required>
         </div>
       </div>
   
       <div class="field">
         <label class="label">Grupo</label>
         <div class="control">
-          <input id="grupo" class="input imput2 text-center" type="number" required>
+          <input id="grupo" class="input imput2 text-center" type="number" title="Es obligatorio que ingrese su grupo" required>
         </div>
       </div>
   
       <div class="field">
         <label class="label">Semestre</label>
         <div class="control">
-          <input id="semestre" class="input imput2 text-center" type="number" required>
+          <input id="semestre" class="input imput2 text-center" type="number" title="Es obligatorio que ingrese semestre" required>
         </div>
       </div>
   
       <div class="field">
         <label class="label">Correo Electronico</label>
         <div class="control">
-          <input id="correo" class="input imput2 text-center" type="email" required>
+          <input id="correo" class="input imput2 text-center" type="email" title="Es obligatorio que ingrese su correo electronico" required>
         </div>
       </div>
       <div class="control">
-        <button id="cancelarInscripcion" class="button is-danger">Cancelar</button><p></p><br><button id="enviarInscripcion" class="button is-info">Aceptar</button>
+        <button id="cancelarInscripcion" class="button is-danger">Cancelar</button><p></p><br><button type="submit" onClick="enviarInscripcion" id="enviarInscripcion" class="button is-info">Aceptar</button>
       </div>  
       </div>
     </div>
@@ -113,4 +113,5 @@
   <script src="/js/Update_User.js"></script>
 
   </body>
+  
 </html>
