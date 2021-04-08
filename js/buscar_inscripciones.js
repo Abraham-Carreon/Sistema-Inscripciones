@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    agregarMatricula()
     const boton = document.getElementById("buscar")
     async function validar() {
         let matricula = document.querySelector("#matricula")
@@ -31,3 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 })
+
+function agregarMatricula()
+{
+    const id = document.getElementById('identificador')
+    const matricula = sessionStorage.getItem('administrador')
+    id.innerHTML = `<b>Matricula: ${matricula}</b>`
+}

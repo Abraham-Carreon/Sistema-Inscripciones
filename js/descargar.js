@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', ()=>
 {
+    validarAdministrador()
+
     agregarDeportes()
 
     const btnBuscar = document.getElementById('buscar')
@@ -7,6 +9,7 @@ document.addEventListener('DOMContentLoaded', ()=>
 
     const btnDescargar = document.getElementById('descargar')
     btnDescargar.addEventListener('click', descargar)
+    agregarMatricula()
 
 })
 
@@ -102,4 +105,23 @@ function descargar()
      {
          console.log("No ai")
      }
+}
+
+function agregarMatricula()
+{
+    const id = document.getElementById('identificador')
+    const matricula = sessionStorage.getItem('administrador')
+    id.innerHTML = `<b>Matricula: ${matricula}</b>`
+}
+
+function validarAdministrador()
+{
+    const matricula = sessionStorage.getItem("administrador")
+    
+    if (matricula == null) 
+    {
+        document.body.style.background = "none"
+        alert("No esta validado, ingrese sus credenciales")
+        window.location.href = "/index.html"
+    }
 }
