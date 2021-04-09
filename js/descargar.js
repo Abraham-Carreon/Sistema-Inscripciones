@@ -63,6 +63,16 @@ function buscar()
 function crearDatosTabla(datos)
 {
     const tabla = document.getElementById('inscripciones')
+    tabla.innerHTML = 
+    `
+        <tr>
+        <td>Matricula</td>
+        <td>Nombre</td>
+        <td>Deporte</td>
+        <td>Correo</td>
+        </tr>
+        <tbody id="inscripciones"></tbody>
+    `
     datos.forEach(inscripcion =>
         {
             const fila = document.createElement('tr')
@@ -103,7 +113,7 @@ function descargar()
      }
      else
      {
-         console.log("No ai")
+         alert("No existen inscripciones")
      }
 }
 
