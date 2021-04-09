@@ -63,14 +63,14 @@
     <br>
     <center><b>Matricula:</b></center>
     <div class="control">
-        <input id="matricula" name="matricula" class="input" type="number" placeholder="---Ingrese su matricula---">
+        <input id="matricula" class="input" type="number" placeholder="---Ingrese su matricula---" tittle="Falta matricula" required>
     </div>
     <br>
     <br>
     <center><p><b>Deporte:</b></p></center>
-    <div id="deporte" name="deporte" class="control">
-      <div  class="select">
-        <select>
+    <div class="control">
+      <div class="select">
+        <select id="deporte">
           <option>---Seleccione una opcion---</option>
           <option>Imua</option>
           <option>Tae Kwon do</option>
@@ -83,9 +83,9 @@
       <br>
       <br>
       <center><p><b>Instructor:</b></p></center>
-      <div id="instructor" class="control">
+      <div class="control">
         <div  class="select">
-          <select>
+          <select id="instructor">
             <option>---Seleccione una opcion---</option>
             <option>Alexis Tobon</option>
           </select>
