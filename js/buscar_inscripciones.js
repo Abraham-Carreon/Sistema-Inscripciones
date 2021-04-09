@@ -5,8 +5,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // agregarDeportes()
     agregarDeportes()
     const boton = document.getElementById("buscar")
-    const boton1 = document.getElementById("id_inscripcion")
+    const botonEliminar = document.getElementsByClassName("btnEliminar")
     async function buscar() {
+        function crearDatosTabla(datos)
+        {
+                const tabla = document.getElementById('inscripciones')
+                datos.forEach(inscripcion =>
+                    {
+                        const fila = document.createElement('tr')
+                        const columnaMatricula = document.createElement('td')
+                        const columnaNombre = document.createElement('td')
+                        const columnaSemestre = document.createElement('td')
+                        const columnaDeporte = document.createElement('td')
+                        const columnaBotonDelete = document.createElement('button')
+
+                        // Agregar caracteristicas boton
+                        columnaBotonDelete.classList.add("button")
+                        columnaBotonDelete.classList.add("is-danger")
+                        columnaBotonDelete.classList.add("btnEliminar")
+                        columnaBotonDelete.textContent = "Eliminar"
+                        columnaBotonDelete.id = inscripcion.Id_inscripcion
+                        columnaBotonDelete.addEventListener('click', eliminar)
+
+                        columnaMatricula.textContent = inscripcion.Matricula
+                        columnaNombre.textContent = inscripcion.Nombre
+                        columnaSemestre.textContent = inscripcion.Semestre
+                        columnaDeporte.textContent = inscripcion.Nombre_deporte
+                        fila.append(columnaMatricula, columnaNombre, columnaSemestre, columnaDeporte, columnaBotonDelete)
+                        tabla.appendChild(fila)
+                    })
+        }
         let matricula = document.querySelector("#Matricula")
 
         if (matricula.value !== "") {
@@ -36,26 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 alert(`No existen inscripciones con la matricula: ${matricula.value} `)
             }
-            function crearDatosTabla(datos)
-    {
-        const tabla = document.getElementById('inscripciones')
-        datos.forEach(inscripcion =>
-            {
-                const fila = document.createElement('tr')
-                const columnaMatricula = document.createElement('td')
-                const columnaNombre = document.createElement('td')
-                const columnaSemestre = document.createElement('td')
-                const columnaDeporte = document.createElement('td')
-    
-                columnaMatricula.textContent = inscripcion.Matricula
-                columnaNombre.textContent = inscripcion.Nombre
-                columnaSemestre.textContent = inscripcion.Semestre
-                columnaDeporte.textContent = inscripcion.Nombre_deporte
-                fila.append(columnaMatricula, columnaNombre, columnaSemestre, columnaDeporte)
-                tabla.appendChild(fila)
-                
-            })
-    }
+
     }
     else
     {
@@ -83,58 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             alert("Selecciona algun deporte o ingresa una matricula")
         }
-    
-    function crearDatosTabla(datos)
-    {
-        const tabla = document.getElementById('inscripciones')
-        datos.forEach(inscripcion =>
-            {
-                const fila = document.createElement('tr')
-                const columnaMatricula = document.createElement('td')
-                const columnaNombre = document.createElement('td')
-                const columnaSemestre = document.createElement('td')
-                const columnaDeporte = document.createElement('td')
-    
-                columnaMatricula.textContent = inscripcion.Matricula
-                columnaNombre.textContent = inscripcion.Nombre
-                columnaSemestre.textContent = inscripcion.Semestre
-                columnaDeporte.textContent = inscripcion.Nombre_deporte
-                fila.append(columnaMatricula, columnaNombre, columnaSemestre, columnaDeporte)
-                tabla.appendChild(fila)
-                
-            })
-    }
     }
     if(deportes.value !== "" || matricula.value !== "")
     {
         const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/`
-            const request = await fetch(url)
-            const response = await request.json()
-
-            function crearDatosTabla(datos)
-    {
-        const tabla = document.getElementById('inscripciones')
-        datos.forEach(inscripcion =>
-            {
-                const fila = document.createElement('tr')
-                const columnaMatricula = document.createElement('td')
-                const columnaNombre = document.createElement('td')
-                const columnaSemestre = document.createElement('td')
-                const columnaDeporte = document.createElement('td')
-    
-                columnaMatricula.textContent = inscripcion.Matricula
-                columnaNombre.textContent = inscripcion.Nombre
-                columnaSemestre.textContent = inscripcion.Semestre
-                columnaDeporte.textContent = inscripcion.Nombre_deporte
-                fila.append(columnaMatricula, columnaNombre, columnaSemestre, columnaDeporte)
-                tabla.appendChild(fila)
-                
-            })
+        const request = await fetch(url)
+        const response = await request.json()
+        crearDatosTabla(response)
     }
    }
-   }
     boton.addEventListener('click', buscar)
-    boton1.addEventListener('click', eliminar)
+    // console.log(botonEliminar)
+    // botonEliminar.addEventListener('click', eliminar)
 })
 
 function agregarDeportes()
@@ -155,12 +124,13 @@ function agregarDeportes()
                     })
     }
 
-async function eliminar()
+async function eliminar(e)
 {
-    let id_inscripcion = inscripcion.id_inscripcion
+    e.preventDefault()
+    const id_inscripcion = e.target.id
     const url = `https://backend-inscripciones.herokuapp.com/api/inscripcion/${id_inscripcion}`
-
-            fetch(url, {
+            
+    fetch(url, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -172,33 +142,11 @@ async function eliminar()
                         window.location.reload()
                     } else {
                         alert("No fue eliminado")
-                        nombre.value = ""
-                        grupo.value = ""
-                        semestre.value = ""
-                        deporte.value = ""
+                        window.location.reload()
                     }
-                })
-                .then(response => console.log('Success:', response))
+                })                
                 .catch(error => console.error('Error:', error))
-                
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function agregarMatricula()
 {
