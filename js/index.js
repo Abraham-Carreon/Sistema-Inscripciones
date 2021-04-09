@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const boton = document.getElementById("enviar")
-    boton.addEventListener('click', validar)
+    boton.addEventListener('click', validar, {once: true})
 })
 
 async function validar() {
