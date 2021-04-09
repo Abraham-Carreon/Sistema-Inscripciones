@@ -94,18 +94,12 @@ function agregarDeportes()
 
 async function eliminar(e)
 {
-<<<<<<< HEAD
-    let id_inscripcion = document.querySelector("#id_inscripcion")
-    const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/${id_inscripcion}`
-
-            fetch(url, {
-=======
     e.preventDefault()
     const id_inscripcion = e.target.id
     const url = `https://backend-inscripciones.herokuapp.com/api/inscripcion/${id_inscripcion}`
             
     fetch(url, {
->>>>>>> 2fa3bc8a04a0a7d29ea6fc167be59a013e300afb
+
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -167,6 +161,6 @@ function validarAdministrador()
     {
         document.body.style.background = "none"
         alert("No esta validado, ingrese sus credenciales")
-        window.location.href = "src/index.html"
+        window.location.href = "/index.html"
     }
 }
