@@ -159,7 +159,7 @@ function crearDatosTabla(datos)
 
 function agregarMatricula()
 {
-    const id = document.getElementById('identificador')
+    const id = document.getElementById('identidicador')
     const matricula = sessionStorage.getItem('administrador')
     id.innerHTML = `<b>Matricula: ${matricula}</b>`
 }
