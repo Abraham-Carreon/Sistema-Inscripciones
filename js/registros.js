@@ -1,14 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     agregarMatricula()
     const boton = document.getElementById("aceptar")
-
+    boton.addEventListener("click",validar)
 
     async function validar()
 {
-    //hola
+    
     const matricula=document.querySelector('#matricula').value
     const deporte=document.querySelector('#deporte').value
     const instructor=document.querySelector('#instructor').value
+    
     if(matricula == "" || deporte == "---Seleccione una opcion---" || instructor == "---Seleccione una opcion---")
     {
         alert("Falta un parametro")
@@ -16,44 +17,45 @@ document.addEventListener('DOMContentLoaded', () => {
     else
     {
         alert("Datos correctos")
-        const datos = {
-            matricula,
-            deporte,
-            instructor
         }
 
-        const url = `https://backend-inscripciones.herokuapp.com/api/deportistas/${matricula}`
-
-        fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    matricula,
-                    deporte,
-                    instructor,
-                })            
-            }).then(res => {
-                res.json()
-                if (res.ok) {
-                    alert("Proceso completado correctamente")
-                } 
-                else 
-                {
-                    alert("Error al registrar, intente de nuevo")
-                    matricula.value = ""
-                    instructor.value = ""
-                    deporte.value = ""
-                }
-            })
-            .then(response => console.log('Success:', response))
-            .catch(error => console.error('Error:', error))
+            const url = `https://backend-inscripciones.herokuapp.com/api/deportistas/${matricula}`
+            const request = await fetch(url)
+            const response = await request.json()
+            if (request.ok) 
+            {
+                alert("Usuario existe")
+                
+                const matricula1 = document.querySelector('#matricula')
+                const deporte1 = document.querySelector('#deporte')
+                const instructor1 = document.querySelector('#instructor')
+                const url2 = `https://backend-inscripciones.herokuapp.com/api/inscripciones/`
+                fetch(url2, {
+                    method: 'POST', // or 'PUT'
+                    body: JSON.stringify(datos), // data can be `string` or {object}!
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => {
+                    res.json()
+                    if (res.ok) {
+                        alert(`Usuario con la matricula: ${matricula} ha sido actualizado`)
+                        window.location.reload()
+                    } else {
+                        alert("No fue actualizado")
+                        matricula1.value = ""
+                        deporte1.value = ""
+                        instructor1.value = ""
+                    }
+                })
+                .then(response => console.log('Success:', response))
+                .catch(error => console.error('Error:', error))
+            } 
+            else 
+            {
+                alert("Usuario no existe")
+            }
     }
-}
-boton.addEventListener("click",validar)
-
-
 })
 
 
@@ -68,8 +70,8 @@ function agregarMatricula()
 }
 
 
-btnCon=document.getElementById("btnModal")
-btnCon.addEventListener("click", continuar)
+// btnCon=document.getElementById("btnModal")
+// btnCon.addEventListener("click", continuar)
 function continuar ()
 {
     var modal = document.getElementById("tvesModal");
@@ -96,7 +98,6 @@ function continuar ()
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
-
             body.style.position = "inherit";
             body.style.height = "auto";
             body.style.overflow = "visible";
@@ -104,36 +105,37 @@ function continuar ()
     }
 }
 
-const buscar = document.querySelector("#cancelar")
-buscar.addEventListener("click", aaaaa)
+// const buscar = document.querySelector("#cancelar")
+// buscar.addEventListener("click", aaaaa)
 
-function aaaaa ()
-{
-const matricula=document.querySelector('#matricula')
-const url = `https://backend-inscripciones.herokuapp.com/api/deportistas/${matricula.value}`
-const request = await fetch(url)
-const response = await request.json()
-if (request.ok) {
-    alert("Usuario existe")
-    const matricula1 = document.querySelector('#matricula1')
-    const nombre1 = document.querySelector('#nombre')
-    const grupo1 = document.querySelector('#grupo')
-    const semestre1 = document.querySelector('#semestre')
+// $(document).ready(aaaaa);
+// function aaaaa ()
+// {
+// const matricula=document.querySelector('#matricula')
+// const url = `https://backend-inscripciones.herokuapp.com/api/deportistas/${matricula.value}`
+// const request = await fetch(url)
+// const response = await request.json()
+// if (request.ok) {
+//     alert("Usuario existe")
+//     const matricula1 = document.querySelector('#matricula1')
+//     const nombre1 = document.querySelector('#nombre')
+//     const grupo1 = document.querySelector('#grupo')
+//     const semestre1 = document.querySelector('#semestre')
 
 
-    response.forEach(deportista => {
-        matricula1.value = deportista.Matricula
-        nombre1.value = deportista.Nombre
-        semestre1.value = deportista.Semestre
-        grupo1.value = deportista.Grupo
+//     response.forEach(deportista => {
+//         matricula1.value = deportista.Matricula
+//         nombre1.value = deportista.Nombre
+//         semestre1.value = deportista.Semestre
+//         grupo1.value = deportista.Grupo
 
         
 
-    })
-} else {
-    alert("Usuario no existe")
-}
-}
+//     })
+// } else {
+//     alert("Usuario no existe")
+// }
+// }
 
 
         
