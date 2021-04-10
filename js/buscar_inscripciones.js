@@ -120,6 +120,17 @@ async function eliminar(e)
 function crearDatosTabla(datos)
 {
         const tabla = document.getElementById('inscripciones')
+        tabla.innerHTML = 
+    `
+        <tr>
+        <td>Matricula</td>
+        <td>Nombre</td>
+        <td>Semestre</td>
+        <td>Deporte</td>
+        <td></td>
+        </tr>
+        <tbody id="inscripciones"></tbody>
+    `
         datos.forEach(inscripcion =>
             {
                 const fila = document.createElement('tr')
