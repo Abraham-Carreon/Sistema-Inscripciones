@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const boton = document.getElementById("mybutton")
     const btnInscripcion = document.getElementById('enviarInscripcion')
     const btnCancelar = document.getElementById("cancelarInscripcion")
+    
     async function validar() {
         let matricula = document.querySelector("#matricula")
 
