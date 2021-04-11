@@ -6,6 +6,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 })
+agregarDeportes()
+function agregarDeportes()
+    {
+        const url = "https://backend-inscripciones.herokuapp.com/api/deportes"
+        fetch(url)
+            .then(res =>res.json())
+                .then(data => 
+                    {
+                        const deportes = document.getElementById('deporte')
+                        data.forEach(deporte =>
+                            {
+                                const dep = document.createElement("option")
+                                dep.textContent = deporte.Nombre_deporte
+                                dep.value = deporte.Id_deporte
+                                deportes.append(dep)                            
+                            })
+                    })
+    }
+
+    agregarInstructores()
+function agregarInstructores()
+    {
+        const url = "https://backend-inscripciones.herokuapp.com/api/entrenadores"
+        fetch(url)
+            .then(res =>res.json())
+                .then(data => 
+                    {
+                        const deportes = document.getElementById('instructor')
+                        data.forEach(entrenador =>
+                            {
+                                const dep = document.createElement("option")
+                                dep.textContent = entrenador.Nombre
+                                dep.value = entrenador.Id_entrenador
+                                deportes.append(dep)                            
+                            })
+                    })
+    }
 
 async function validar()
 {
@@ -35,8 +72,8 @@ async function validar()
                 {
                     //! Revisen estos datos antos de mandarlos
                     const matricula = document.querySelector('#matricula').value
-                    const idDeporte = document.getElementById('#deporte')
-                    const idEntrenador = document.getElementById('#instructor')
+                    const idDeporte = document.querySelector('#deporte').value
+                    const idEntrenador = document.querySelector('#instructor').value
                     const idAdministrador = sessionStorage.getItem('administrador')
                     console.log(matricula, idDeporte, idEntrenador, idAdministrador)
                     const datos = {
@@ -45,7 +82,7 @@ async function validar()
                         idDeporte,
                         idAdministrador
                     }
-                    const url2 = `https://backend-inscripciones.herokuapp.com/api/inscripcion`
+                    const url2 = `https://backend-inscripciones.herokuapp.com/api/inscripcion/`
                     fetch(url2, {
                         method: 'POST',
                         body: JSON.stringify(datos),
