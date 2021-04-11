@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // agregarMatricula()
+    agregarMatricula()
+    validarAdministrador()
     const boton = document.getElementById("mybutton")
     const btnInscripcion = document.getElementById('enviarInscripcion')
     const btnCancelar = document.getElementById("cancelarInscripcion")
@@ -101,9 +102,21 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCancelar.addEventListener('click', cancelar)
 })
 
-/*function agregarMatricula()
+function agregarMatricula()
 {
     const id = document.getElementById('identificador')
     const matricula = sessionStorage.getItem('administrador')
     id.innerHTML = `<b>Matricula: ${matricula}</b>`
-}*/
+}
+
+function validarAdministrador()
+{
+    const matricula = sessionStorage.getItem("administrador")
+    
+    if (matricula == null) 
+    {
+        document.body.style.background = "none"
+        alert("No esta validado, ingrese sus credenciales")
+        window.location.href = "/index.html"
+    }
+}
