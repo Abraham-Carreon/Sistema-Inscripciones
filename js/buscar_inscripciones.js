@@ -25,7 +25,7 @@ function agregarDeportes()
                     })
     }
     
-    async function buscar() {
+async function buscar() {
         
         const matricula = document.querySelector("#Matricula")
         const deportes = parseInt(document.getElementById('deportes').value)
@@ -48,12 +48,12 @@ function agregarDeportes()
                         })
                         .then(data => 
                             {
-                                crearDatosTabla(data)
+                                return crearDatosTabla(data)
                             })            
             }
             else
             {
-                alert(`No existen inscripciones con la matricula: ${matricula.value} `)
+                return alert(`No existen inscripciones con la matricula: ${matricula.value} `)
             }
 
     }
@@ -74,21 +74,16 @@ function agregarDeportes()
                     })
                     .then(data => 
                         {
-                            crearDatosTabla(data)
+                            return crearDatosTabla(data)
                         })            
         }
         else
         {
-            alert("Selecciona algun deporte o ingresa una matricula")
+            const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/`
+            const request = await fetch(url)
+            const response = await request.json()
+            crearDatosTabla(response)
         }
-    }
-
-    if( !isNaN(deportes) && matricula.value !== "" )
-    {
-        const url = `https://backend-inscripciones.herokuapp.com/api/inscripciones/`
-        const request = await fetch(url)
-        const response = await request.json()
-        crearDatosTabla(response)
     }
 }
 
