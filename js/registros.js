@@ -35,17 +35,17 @@ async function validar()
                 {
                     //! Revisen estos datos antos de mandarlos
                     const matricula = document.querySelector('#matricula').value
-                    const idDeporte = document.querySelector('#deporte').value
-                    const idEntrenador = document.querySelector('#instructor').value
+                    const idDeporte = document.getElementById('#deporte')
+                    const idEntrenador = document.getElementById('#instructor')
                     const idAdministrador = sessionStorage.getItem('administrador')
                     console.log(matricula, idDeporte, idEntrenador, idAdministrador)
-                    // const datos = {
-                    //     matricula,
-                    //     idEntrenado,
-                    //     idDeport,
-                    //     idAdministrador
-                    // }
-                    const url2 = `https://backend-inscripciones.herokuapp.com/api/inscripcion/`
+                    const datos = {
+                        matricula,
+                        idEntrenador,
+                        idDeporte,
+                        idAdministrador
+                    }
+                    const url2 = `https://backend-inscripciones.herokuapp.com/api/inscripcion`
                     fetch(url2, {
                         method: 'POST',
                         body: JSON.stringify(datos),
