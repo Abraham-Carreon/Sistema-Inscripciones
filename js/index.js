@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const boton = document.getElementById("enviar")
     boton.addEventListener('click', validar, {once: true})
+
+    document.querySelector("#cambiar").addEventListener('click', () =>
+    {
+        window.open("https://localhost:44336/login") 
+    })
 })
 
 async function validar() {
