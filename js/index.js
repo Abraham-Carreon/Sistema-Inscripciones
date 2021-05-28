@@ -36,9 +36,7 @@ async function validar() {
                     guardarEnStorage(matricula.value)
                 } else {
                     alert("El usuario no existe, intente nuevamente")
-                    matricula.value = ""
-                    contrasena.value = ""
-                    
+                    window.location.reload()
                 }
             })
             .then(response => console.log('Success:', response))
