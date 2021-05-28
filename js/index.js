@@ -38,6 +38,7 @@ async function validar() {
                     alert("El usuario no existe, intente nuevamente")
                     matricula.value = ""
                     contrasena.value = ""
+                    
                 }
             })
             .then(response => console.log('Success:', response))
