@@ -31,7 +31,7 @@ async function validar() {
                 if (res.ok) {                    
                     alert("Usuario validado")
                     // Direcciona a la pagina principal
-                    window.location.href = "/src/principal.html"      
+                    window.location.href = "Sistema-Inscripciones/src/principal.html"      
                     
                     // Agrega la matricula del administrador al session storage
                     guardarEnStorage(matricula.value)
