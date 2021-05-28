@@ -12,7 +12,7 @@ function validarAdministrador()
     {
         document.body.style.background = "none"
         alert("No esta validado, ingrese sus credenciales")
-        window.location.href = "/index.html"
+        window.location.href = ""
     }
 }
 
