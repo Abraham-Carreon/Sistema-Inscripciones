@@ -29,6 +29,8 @@ async function validar() {
             }).then(res => {
                 res.json()
                 if (res.ok) {
+                    const a = window.location.toString()
+                    console.log(a)
                     alert("Usuario validado")
                     // Direcciona a la pagina principal
                     window.location.href = "/src/principal.html"      
@@ -36,8 +38,6 @@ async function validar() {
                     guardarEnStorage(matricula.value)
                 } else {
                     alert("El usuario no existe, intente nuevamente")
-                    const a = window.location.toString()
-                    console.log(a)
                     window.location.reload()
                 }
             })
