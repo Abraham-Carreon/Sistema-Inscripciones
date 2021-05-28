@@ -69,7 +69,8 @@ async function validar()
                 const confirmacion = confirm(`Desea inscribir al alumno: ${nombre}\nCon matricula: ${matricula}`)
                 
                 if (confirmacion)
-                {               
+                {
+                    //! Revisen estos datos antos de mandarlos
                     const matricula = document.querySelector('#matricula').value
                     const idDeporte = document.querySelector('#deporte').value
                     const idEntrenador = document.querySelector('#instructor').value
@@ -128,6 +129,6 @@ function validarAdministrador()
     {
         document.body.style.background = "none"
         alert("No esta validado, ingrese sus credenciales")
-        window.location.href = "Sistema-Inscripciones/index.html"
+        window.location.href = "/index.html"
     }
 }

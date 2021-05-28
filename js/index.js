@@ -31,7 +31,11 @@ async function validar() {
                 if (res.ok) {
                     alert("Usuario validado")
                     // Direcciona a la pagina principal
+<<<<<<< HEAD
                     window.location.href = "/src/principal.html"
+=======
+                    window.location.href = "/principal.html"
+>>>>>>> parent of 1409e9f (Prueba completa para deploy)
                     // Agrega la matricula del administrador al session storage
                     guardarEnStorage(matricula.value)
                 } else {
