@@ -28,9 +28,7 @@ async function validar() {
                 }
             }).then(res => {
                 res.json()
-                if (res.ok) {
-                    const a = window.location.toString()
-                    console.log(a)
+                if (res.ok) {                    
                     alert("Usuario validado")
                     // Direcciona a la pagina principal
                     window.location.href = "/src/principal.html"      
